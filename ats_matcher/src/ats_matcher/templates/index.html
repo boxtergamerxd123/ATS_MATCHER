@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/score-form" method="post" class="card">
+  <div class="grid">
+    <div>
+      <label>Resume (plain text)</label>
+      <textarea name="resume" placeholder="Paste your resume here…" required></textarea>
+    </div>
+    <div>
+      <label>Job description (plain text)</label>
+      <textarea name="job" placeholder="Paste the job post here…" required></textarea>
+    </div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" type="submit">Analyze</button>
+  </div>
+</form>
+
+{% if result %}
+  <div class="card">
+    <h2>Match score: {{ result.score }} / 100</h2>
+    <h3>Top resume terms</h3>
+    <div>
+      {% for t in result.top_resume_terms %}<span class="pill">{{ t }}</span>{% endfor %}
+    </div>
+    <h3>Top job terms</h3>
+    <div>
+      {% for t in result.top_job_terms %}<span class="pill">{{ t }}</span>{% endfor %}
+    </div>
+    <h3>Missing terms</h3>
+    <div>
+      {% for t in result.missing_terms %}<span class="pill">{{ t }}</span>{% endfor %}
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

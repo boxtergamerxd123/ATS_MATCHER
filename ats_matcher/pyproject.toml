@@ -1,0 +1,10 @@
+[project]
+name = "ats-matcher"
+version = "0.1.0"
+description = "Resume vs Job description matcher (ATS-style)"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name="You", email="you@example.com"}]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
